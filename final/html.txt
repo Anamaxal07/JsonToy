@@ -30,21 +30,18 @@
 								txt +=`
 								
 											<div class="col-md-4">
-												<br><br>												
 												<div class="card-content">
-													<div class="card-img">								
+													<div class="card-img">
+														
 														<img src="/HTML/img/${TOYS[i].img}" alt="">
-														<span><h4>${TOYS[i].toy_category}</h4></span>
+														<span><h4>${TOYS[i].toy_name}</h4></span>
 													</div>
 													<div class="card-desc">
-														<h3>${TOYS[i].toy_name}</h3><br>
-														<p2><b>Material:</b> ${TOYS[i].toy_material}</p>
-														<p2>${TOYS[i].toy_description}</p>
-															<a href="#" class="btn-card">Price: ${TOYS[i].toy_price}</a>
-															&nbsp&nbsp&nbsp
-															<a href="#" class="btn-card">Stocks: ${TOYS[i].toy_stocks}</a>    
+														<h3>Heading</h3>
+														<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis
+															voluptas totam</p>
+															<a href="#" class="btn-card">Read</a>   
 													</div>
-													<br>
 												</div>
 											</div>
 											
