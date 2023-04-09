@@ -1,24 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<link href="style.css" rel="stylesheet">
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!------ Include the above in your HEAD tag ---------->
+
+	<title>Document</title>
 </head>
 <body>
-    <h2>Get JSON Data from a PHP Server</h2>
-    <p id="demo"></p>
+<h1 style="text-align:center;">My Toys Collections:</h1>
 
-    <script>
-    const xmlhttp = new XMLHttpRequest();
+<script>
+	var txt = "";
+	const xmlhttp = new XMLHttpRequest();
+	xmlhttp.onload = function() {
+			if (this.readyState == 4 && this.status == 200) {
+			let TOYS = JSON.parse(this.responseText);
+			console.log(TOYS);
+			let txt = "";
 
-    xmlhttp.onload = function() {
-    const myObj = JSON.parse(this.responseText);
-    document.getElementById("demo").innerHTML = myObj.name;
-    }
+			for(i = 0; i < TOYS.length;i++){
+				txt +=`
+						<div class="social-box">
+							<div class="container">
+								<div class="row">
+									<div class="col-lg-4 col-xs-12 text-center">
+										<div class="box">
+											<i class="fa fa-behance fa-3x" aria-hidden="true"></i>
+											<div class="box-title">
+												<h3>${TOYS[i].toy_name}</h3>
+												<img src="/HTML/img/playdoh.jpg" alt="Playdoh" width="250" height="250">
+											</div>
+											<div class="box-text">
+												<h4>Materials: ${TOYS[i].toy_material}</h4>
+												<h4>
+													Price: ${TOYS[i].toy_price}
+													Stocks:${TOYS[i].toy_stocks}
+												</h4>
+											</div>
+											<div class="box-btn">
+												<a href="#">Category: ${TOYS[i].toy_category}</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						`;
+                    }
+                }
+            }
     xmlhttp.open("GET", "http://jsontoy.test/PHP/toys.php");
     xmlhttp.send();
-    </script>
+</script>
 </body>
 </html>
